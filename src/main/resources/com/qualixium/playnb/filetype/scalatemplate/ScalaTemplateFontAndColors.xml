@@ -1,0 +1,19 @@
+<!DOCTYPE fontscolors PUBLIC 
+    "-//NetBeans//DTD Editor Fonts and Colors settings 1.1//EN" 
+    "https://netbeans.org/dtds/EditorFontsColors-1_1.dtd"> 
+<fontscolors> 
+    <fontcolor name="magic_char" default="char" foreColor="FF6600" >
+        <font size="16" style="bold"/>
+    </fontcolor>
+    <fontcolor name="form_components" default="identifier" foreColor="919902"> 
+        <font style="bold"/>
+    </fontcolor>
+    <fontcolor name="st_keys" default="identifier" foreColor="037069" /> 
+    <fontcolor name="operator" default="operator" foreColor="ff0f7701" >
+        <font size="15" style="bold"/>
+    </fontcolor>
+    <fontcolor name="literal" default="keyword" foreColor="ffff9900">
+        <font style="bold"/>
+    </fontcolor>
+    <fontcolor name="identifier" default="identifier" foreColor="ffff00cc"/>
+</fontscolors>

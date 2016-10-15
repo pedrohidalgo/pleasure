@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Layer: com/qualixium/playnb/layer.xml
+OpenIDE-Module-Localizing-Bundle: com/qualixium/playnb/Bundle.properties
+

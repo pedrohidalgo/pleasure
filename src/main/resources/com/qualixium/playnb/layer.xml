@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem> 
+    <folder name="Editors"> 
+        <folder name="text"> 
+            <folder name="x-sbt"> 
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="com.qualixium.playnb.filetype.sbt.Bundle"/> 
+                <folder name="FontsColors"> 
+                    <folder name="NetBeans"> 
+                        <folder name="Defaults"> 
+                            <file name="SBTFontAndColors.xml" url="filetype/sbt/SBTFontAndColors.xml"> 
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="com.qualixium.playnb.filetype.sbt.Bundle"/> 
+                            </file> 
+                        </folder> 
+                    </folder> 
+                </folder> 
+            </folder> 
+            <folder name="x-conf"> 
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="com.qualixium.playnb.filetype.conf.Bundle"/> 
+                <folder name="FontsColors"> 
+                    <folder name="NetBeans"> 
+                        <folder name="Defaults"> 
+                            <file name="ConfFontAndColors.xml" url="filetype/conf/ConfFontAndColors.xml"> 
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="com.qualixium.playnb.filetype.conf.Bundle"/> 
+                            </file> 
+                        </folder> 
+                    </folder> 
+                </folder> 
+            </folder> 
+            <folder name="routes-file"> 
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="com.qualixium.playnb.filetype.routes.Bundle"/> 
+                <folder name="FontsColors"> 
+                    <folder name="NetBeans"> 
+                        <folder name="Defaults"> 
+                            <file name="RoutesFontAndColors.xml" url="filetype/routes/RoutesFontAndColors.xml"> 
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="com.qualixium.playnb.filetype.routes.Bundle"/> 
+                            </file> 
+                        </folder> 
+                    </folder> 
+                </folder> 
+            </folder> 
+            <folder name="x-scala-template"> 
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="com.qualixium.playnb.filetype.scalatemplate.Bundle"/> 
+                <folder name="FontsColors"> 
+                    <folder name="NetBeans"> 
+                        <folder name="Defaults"> 
+                            <file name="ScalaTemplateFontAndColors.xml" url="filetype/scalatemplate/ScalaTemplateFontAndColors.xml"> 
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="com.qualixium.playnb.filetype.scalatemplate.Bundle"/> 
+                            </file> 
+                        </folder> 
+                    </folder> 
+                </folder> 
+            </folder> 
+        </folder> 
+    </folder> 
+    <folder name="OptionsDialog"> 
+        <folder name="PreviewExamples"> 
+            <folder name="text"> 
+                <file name="x-sbt" url="filetype/sbt/SBTTemplate.sbt"/> 
+                <file name="routes-file" url="filetype/routes/routes"/> 
+                <file name="x-scala-template" url="filetype/scalatemplate/ScalaTemplatePreview.scala.html"/> 
+            </folder> 
+        </folder> 
+    </folder>
+    <folder name="HTMLPalette"> 
+        <folder name="Play Framework Forms"> 
+            <file name="inputText.xml" url="filetype/scalatemplate/palette/inputText.xml"> 
+                <attr name="position" intvalue="1"/> 
+            </file>
+            <file name="checkbox.xml" url="filetype/scalatemplate/palette/checkbox.xml">
+                <attr name="position" intvalue="2"/> 
+            </file>
+            <file name="select.xml" url="filetype/scalatemplate/palette/select.xml">
+                <attr name="position" intvalue="3"/> 
+            </file>
+            <file name="textarea.xml" url="filetype/scalatemplate/palette/textarea.xml">
+                <attr name="position" intvalue="4"/> 
+            </file>
+            <file name="inputRadioGroup.xml" url="filetype/scalatemplate/palette/inputRadioGroup.xml">
+                <attr name="position" intvalue="5"/> 
+            </file>
+            <file name="inputDate.xml" url="filetype/scalatemplate/palette/inputDate.xml">
+                <attr name="position" intvalue="6"/> 
+            </file>
+            <file name="inputPassword.xml" url="filetype/scalatemplate/palette/inputPassword.xml">
+                <attr name="position" intvalue="7"/> 
+            </file>
+            <file name="inputFile.xml" url="filetype/scalatemplate/palette/inputFile.xml">
+                <attr name="position" intvalue="8"/> 
+            </file>
+        </folder> 
+    </folder>
+</filesystem>

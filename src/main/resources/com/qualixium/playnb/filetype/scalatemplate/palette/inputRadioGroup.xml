@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE editor_palette_item PUBLIC "-//NetBeans//Editor Palette Item 1.1//EN" "https://netbeans.org/dtds/editor-palette-item-1_1.dtd">
+<editor_palette_item version="1.0"> 
+    <class name="com.qualixium.playnb.filetype.scalatemplate.palette.InputRadioGroup" /> 
+    <icon16 urlvalue="com/qualixium/playnb/filetype/scalatemplate/palette/icons/radio_button_16.png" /> 
+    <icon32 urlvalue="com/qualixium/playnb/filetype/scalatemplate/palette/icons/radio_button_32.png" /> 
+    <inline-description> 
+        <display-name>inputRadioGroup</display-name> 
+        <tooltip> 
+            <![CDATA[ @inputRadioGroup(contactForm("gender"),options = Seq("M"->"Male","F"->"Female")'_label -> "Gender",'_error -> contactForm("gender").error.map(_.withMessage("select gender"))) ]]>
+        </tooltip> 
+    </inline-description> 
+</editor_palette_item>

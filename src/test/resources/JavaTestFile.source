@@ -1,0 +1,31 @@
+import models.Employee;
+import play.*;
+import play.mvc.*;
+
+import views.html.*;
+
+public class JavaTestFile extends Controller {
+
+    public Result index() {
+        String myvar;
+        Employee e = new Employee();
+//        MainController mainController = new MainController();
+//        mainController.co
+        
+        return ok(index.render("tell me something"));
+    }
+    
+    public Result updateThisOneAgain(int employeeId){
+        return ok("klk");
+    }
+    
+    public Result updateThisTwoParam(int employeeId, String name){
+        return ok("you know what I'm about to return");
+    }
+    
+    public String getValue(){
+//    public Result getValue(){
+//        return ok("fsdf");
+        return "fsdf";
+    }
+}
