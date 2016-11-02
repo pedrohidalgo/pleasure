@@ -3,11 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.qualixium</groupId>
     <artifactId>playnb</artifactId> 
-    <version>1.2.2</version>
+    <version>1.3.1</version>
     <packaging>nbm</packaging>
     <description>
         <![CDATA[
 <h2>Pleasure Play Framework Plugin: Develop Play Framework apps with Pleasure. </h2>
+<h5>Motivates this work with <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7FUCWX98NEUAL">
+  <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" alt="btn_donate_SM.gif"></a></h5>
+<h5>Pull Requests and bug reports, feature/enhancement requests are very welcome!</h5>
 <h4>Most Important Features:</h4>
 <ul>
     <li>Create, run, debug and test your app directly in the IDE using Java and/or Scala</li>
@@ -15,7 +18,6 @@
     Hyperlink navigation, Mark occurrences, show methods code without navigate to source file)</li>
     <li>Scala Template support (Formatting, Syntax Error Hightlighting, Code completion, 
     Hyperlink navigation, Components palette, Mark occurrences, show class and methods code without navigate to source file)</li>
-    <li>Execute Custom Shell Commands without using the terminal.</li>
     <li>application.conf support. (Syntax coloring, Formatting, Code Completion, Mark Occurrences, 
     Visually edit database connections). There is support for any .conf file in a play project</li>
     <li>Test Coverage Integration: jacoco4sbt and sbt-scoverage</li>
@@ -71,13 +73,10 @@
                 <extensions>true</extensions>
                 <configuration>
                     <author>Pedro Hidalgo</author>
-                    <homePageUrl>http://nbpleasureplugin.com/</homePageUrl>
+                    <homePageUrl>https://github.com/pedrohidalgo/pleasure</homePageUrl>
                     <requiresRestart>true</requiresRestart>
-                    <keystore>/home/pedro/qualixium/pluginDev/security/keystore</keystore>
-                    <keystorealias>myself</keystorealias>
-                    <keystorepassword>specialsauce</keystorepassword>
-                    <licenseName>Pleasure Play Plugin Software License Agreement</licenseName>
-                    <licenseFile>src/main/resources/LICENSE</licenseFile>
+                    <licenseName>Apache License Version 2.0</licenseName>
+                    <licenseFile>LICENSE</licenseFile>
                 </configuration>
             </plugin>
             <plugin>
@@ -336,14 +335,13 @@
             <version>${netbeans.platform.version}</version>
             <type>jar</type>
         </dependency>
-        <!--FOR NETBEANS PLATFORM 8.2 MIGRATION dependencies below can be used -->
-        <!--                <dependency>
+        <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-java-source-base</artifactId>
             <version>${netbeans.platform.version}</version>
             <type>jar</type>
-        </dependency>-->
-        <!--        <dependency>
+        </dependency>
+        <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-util-ui</artifactId>
             <version>${netbeans.platform.version}</version>
@@ -352,7 +350,7 @@
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-csl-types</artifactId>
             <version>${netbeans.platform.version}</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -379,6 +377,6 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <netbeans.platform.version>RELEASE80</netbeans.platform.version>
+        <netbeans.platform.version>RELEASE82</netbeans.platform.version>
     </properties>
 </project>

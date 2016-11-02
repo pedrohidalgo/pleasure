@@ -154,7 +154,6 @@ public class ClassPathProviderImpl implements ClassPathProvider {
                     String pathScalaLibraryFile = ivyCacheDir
                             + "org.scala-lang/scala-library/jars/scala-library-" + maxScalaLibVersion + ".jar";
                     URL urlScalaLibrary = Utilities.toURI(new File(pathScalaLibraryFile)).toURL();
-                    //TODO this need to be tested on mac
                     if (urlScalaLibrary != null) {
                         listUrlClassPath.add(urlScalaLibrary);
                         classLoaderWithScalaLibrary = URLClassLoader.newInstance(

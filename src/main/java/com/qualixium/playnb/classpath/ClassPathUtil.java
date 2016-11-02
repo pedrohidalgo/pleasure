@@ -46,7 +46,7 @@ public class ClassPathUtil {
 
                     if (!isSbtEclipsePluginAdded) {
                         final String sbtEclipsePluginStringToAdd = LINE_SEPARATOR + LINE_SEPARATOR
-                                + "addSbtPlugin(\"com.typesafe.sbteclipse\" % \"sbteclipse-plugin\" % \"4.0.0\")";
+                                + "addSbtPlugin(\"com.typesafe.sbteclipse\" % \"sbteclipse-plugin\" % \"5.0.1\")";
                         Files.write(pluginsSBTFile.toPath(),
                                 sbtEclipsePluginStringToAdd.getBytes(),
                                 StandardOpenOption.APPEND);
