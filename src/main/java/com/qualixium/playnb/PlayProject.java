@@ -12,6 +12,7 @@ import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import org.netbeans.api.annotations.common.StaticResource;
+import org.netbeans.api.project.FileOwnerQuery;
 import org.netbeans.api.project.Project;
 import org.netbeans.api.project.ProjectInformation;
 import org.netbeans.spi.project.ProjectState;
@@ -19,12 +20,16 @@ import org.netbeans.spi.project.ui.LogicalViewProvider;
 import org.netbeans.spi.project.ui.support.CommonProjectActions;
 import org.netbeans.spi.project.ui.support.NodeFactorySupport;
 import org.openide.filesystems.FileObject;
+import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataFolder;
+import org.openide.loaders.DataObject;
 import org.openide.loaders.DataObjectNotFoundException;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
 import org.openide.nodes.FilterNode;
 import org.openide.nodes.Node;
+import org.openide.nodes.NodeNotFoundException;
+import org.openide.nodes.NodeOp;
 import org.openide.util.Exceptions;
 import org.openide.util.ImageUtilities;
 import org.openide.util.Lookup;
@@ -38,9 +43,8 @@ public class PlayProject implements Project {
     private Lookup lkp;
     private final ClassPathProviderImpl classPathProviderImpl;
     private SBTDependenciesParentNode sbtDependenciesParentNode;
-    
+
     public static final String PLUGIN_NAME = "Pleasure";
-    public static final String VERSION = "1.2.2";
     public static final boolean IS_PRODUCTION = true;
 
     PlayProject(FileObject dir, ProjectState state) {
@@ -202,8 +206,99 @@ public class PlayProject implements Project {
         }
 
         @Override
-        public Node findPath(Node root, Object target) { //leave unimplemented for now 
+        public Node findPath(Node root, Object target) {
+            //This functionality was taken from org.netbeans.modules.php.project.ui.logicalview.PhpLogicalViewProvider.findPath
+            Project p = root.getLookup().lookup(Project.class);
+            if (p == null) {
+                return null;
+            }
+            // Check each child node in turn.
+            Node[] children = root.getChildren().getNodes(true);
+            for (Node node : children) {
+                if (target instanceof DataObject || target instanceof FileObject) {
+                    FileObject kidFO = node.getLookup().lookup(FileObject.class);
+                    if (kidFO == null) {
+                        continue;
+                    }
+                    // Copied from org.netbeans.spi.java.project.support.ui.TreeRootNode.PathFinder.findPath:
+                    FileObject targetFO;
+                    if (target instanceof DataObject) {
+                        targetFO = ((DataObject) target).getPrimaryFile();
+                    } else {
+                        targetFO = (FileObject) target;
+                    }
+                    Project owner = FileOwnerQuery.getOwner(targetFO);
+                    if (!p.equals(owner)) {
+                        return null; // Don't waste time if project does not own the fileobject
+                    }
+                    if (kidFO == targetFO) {
+                        return node;
+                    } else if (FileUtil.isParentOf(kidFO, targetFO)) {
+                        String relPath = FileUtil.getRelativePath(kidFO, targetFO);
+
+                        // first path without extension (more common case)
+                        String[] path = relPath.split("/"); // NOI18N
+                        path[path.length - 1] = targetFO.getName();
+
+                        // first try to find the file without extension (more common case)
+                        Node found = findNode(node, path);
+                        if (found == null) {
+                            // file not found, try to search for the name with the extension
+                            path[path.length - 1] = targetFO.getNameExt();
+                            found = findNode(node, path);
+                        }
+                        if (found == null) {
+                            // can happen for tests that are underneath sources directory
+                            continue;
+                        }
+                        if (hasObject(found, target)) {
+                            return found;
+                        }
+                        Node parent = found.getParentNode();
+                        Children kids = parent.getChildren();
+                        children = kids.getNodes();
+                        for (Node child : children) {
+                            if (hasObject(child, target)) {
+                                return child;
+                            }
+                        }
+                    }
+                }
+            }
             return null;
+        }
+
+        private boolean hasObject(Node node, Object obj) {
+            if (obj == null) {
+                return false;
+            }
+            FileObject fileObject = node.getLookup().lookup(FileObject.class);
+            if (fileObject == null) {
+                return false;
+            }
+            if (obj instanceof DataObject) {
+                DataObject dataObject = node.getLookup().lookup(DataObject.class);
+                if (dataObject == null) {
+                    return false;
+                }
+                if (dataObject.equals(obj)) {
+                    return true;
+                }
+                return hasObject(node, ((DataObject) obj).getPrimaryFile());
+            } else if (obj instanceof FileObject) {
+                return obj.equals(fileObject);
+            }
+            return false;
+        }
+
+        private Node findNode(Node start, String[] path) {
+            Node found = null;
+            try {
+                found = NodeOp.findPath(start, path);
+            } catch (NodeNotFoundException ex) {
+                // ignored
+            }
+            return found;
         }
     }
 
