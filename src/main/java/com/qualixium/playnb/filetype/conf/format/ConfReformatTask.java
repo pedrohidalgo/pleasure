@@ -2,7 +2,6 @@ package com.qualixium.playnb.filetype.conf.format;
 
 import com.qualixium.playnb.util.MiscUtil;
 import static com.qualixium.playnb.util.MiscUtil.LINE_SEPARATOR;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -59,7 +58,7 @@ public class ConfReformatTask implements ReformatTask {
 
         String stringResult = processLineSeparators(sbResult.toString());
 
-        return stringResult;
+        return stringResult.substring(0, stringResult.length() - 1); //substring to remove the last LINE_SEPARATOR
     }
 
     public static String processLineSeparators(String fileContent) {

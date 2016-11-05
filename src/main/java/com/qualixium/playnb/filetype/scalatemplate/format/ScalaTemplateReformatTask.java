@@ -104,7 +104,7 @@ public class ScalaTemplateReformatTask implements ReformatTask {
             }
         }
 
-        return sbResult.toString();
+        return sbResult.toString().substring(0, sbResult.length() - 1); //substring to remove the last LINE_SEPARATOR
     }
 
     public static int getOpenTagsAmount(String line) {

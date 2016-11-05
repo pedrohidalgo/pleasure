@@ -4,7 +4,6 @@ import com.qualixium.playnb.PlayProject;
 import com.qualixium.playnb.filetype.routes.parser.RoutesLineParsedDTO;
 import com.qualixium.playnb.util.MiscUtil;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
@@ -115,8 +114,8 @@ public class RoutesLanguageHelper {
 
                         result.append(MiscUtil.LINE_SEPARATOR);
                     });
-
-            return result.toString();
+            
+            return result.toString().substring(0, result.length() - 1); //substring to remove the last LINE_SEPARATOR
         }
 
         return fileContent;
