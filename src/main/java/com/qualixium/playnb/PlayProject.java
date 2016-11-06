@@ -334,7 +334,9 @@ public class PlayProject implements Project {
                     GenericSources.group(project, project.getProjectDirectory().getFileObject("test"), type, displayName, null, null),
                 };
             } else {
-                return new SourceGroup[0];
+                return new SourceGroup[]{
+                    GenericSources.group(project, project.getProjectDirectory(), type, displayName, null, null)
+                };
             }
         }
 
