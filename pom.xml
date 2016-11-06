@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.qualixium</groupId>
     <artifactId>playnb</artifactId> 
-    <version>1.3.3</version>
+    <version>1.4</version>
     <packaging>nbm</packaging>
     <description>
         <![CDATA[
@@ -373,6 +373,16 @@
             <groupId>org.swinglabs.swingx</groupId>
             <artifactId>swingx-all</artifactId>
             <version>1.6.5-1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-refactoring-java</artifactId>
+            <version>${netbeans.platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-refactoring-api</artifactId>
+            <version>${netbeans.platform.version}</version>
         </dependency>
     </dependencies>
     <properties>

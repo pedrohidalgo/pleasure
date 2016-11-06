@@ -30,7 +30,23 @@ public class MiscUtil {
 
     public enum Language {
 
-        JAVA, SCALA
+        JAVA("java"), SCALA("scala");
+        
+        /**
+         * Extension without the period at the beginning
+         */
+        private final String extention;
+
+        private Language(String extention) {
+            this.extention = extention;
+        }
+
+        /**
+         * Returns the extension without the period at the beginning
+         */
+        public String getExtention() {
+            return extention;
+        }
     }
 
     public static final Comparator<FileObject> FILE_OBJECT_COMPARATOR = (FileObject f1, FileObject f2) -> {

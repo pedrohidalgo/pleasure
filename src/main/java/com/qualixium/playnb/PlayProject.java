@@ -6,16 +6,23 @@ import com.qualixium.playnb.actions.PlayIDEActionProvider;
 import com.qualixium.playnb.classpath.ClassPathProviderImpl;
 import com.qualixium.playnb.nodes.sbtdependencies.SBTDependenciesParentNode;
 import com.qualixium.playnb.project.specific.ProjectCustomizerProvider;
+import static com.qualixium.playnb.util.MiscUtil.Language.JAVA;
+import static com.qualixium.playnb.util.MiscUtil.Language.SCALA;
 import java.awt.Image;
 import java.beans.PropertyChangeListener;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.event.ChangeListener;
 import org.netbeans.api.annotations.common.StaticResource;
 import org.netbeans.api.project.FileOwnerQuery;
 import org.netbeans.api.project.Project;
 import org.netbeans.api.project.ProjectInformation;
+import org.netbeans.api.project.ProjectUtils;
+import org.netbeans.api.project.SourceGroup;
+import org.netbeans.api.project.Sources;
 import org.netbeans.spi.project.ProjectState;
+import org.netbeans.spi.project.support.GenericSources;
 import org.netbeans.spi.project.ui.LogicalViewProvider;
 import org.netbeans.spi.project.ui.support.CommonProjectActions;
 import org.netbeans.spi.project.ui.support.NodeFactorySupport;
@@ -75,7 +82,8 @@ public class PlayProject implements Project {
                 new PlayProjectLogicalView(this),
                 new PlayIDEActionProvider(this),
                 classPathProviderImpl,
-                new ProjectCustomizerProvider(this)
+                new ProjectCustomizerProvider(this),
+                new PlayProjectSources(this)
             });
         }
         return lkp;
@@ -308,6 +316,36 @@ public class PlayProject implements Project {
 
     public void setSbtDependenciesParentNode(SBTDependenciesParentNode sbtDependenciesParentNode) {
         this.sbtDependenciesParentNode = sbtDependenciesParentNode;
+    }
+    
+    class PlayProjectSources implements Sources{
+        final PlayProject project;
+
+        public PlayProjectSources(PlayProject project) {
+            this.project = project;
+        }
+
+        @Override
+        public SourceGroup[] getSourceGroups(String type) {
+            String displayName = ProjectUtils.getInformation(project).getDisplayName();
+             if (JAVA.getExtention().equals(type) || SCALA.getExtention().equals(type)) {
+                return new SourceGroup[] {
+                    GenericSources.group(project, project.getProjectDirectory().getFileObject("app"), type, displayName, null, null),
+                    GenericSources.group(project, project.getProjectDirectory().getFileObject("test"), type, displayName, null, null),
+                };
+            } else {
+                return new SourceGroup[0];
+            }
+        }
+
+        @Override
+        public void addChangeListener(ChangeListener listener) {
+        }
+
+        @Override
+        public void removeChangeListener(ChangeListener listener) {
+        }
+        
     }
 
 }

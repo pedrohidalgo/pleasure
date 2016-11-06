@@ -28,11 +28,7 @@ public class TestFileFilterNode extends FilterNode {
                 .stream()
                 .filter(action -> {
                     if (action != null) {
-                        Object actionNameObj = action.getValue(Action.NAME);
-                        String actionName = actionNameObj == null ? "" : actionNameObj.toString();
-                        return action.isEnabled()
-                        && !actionName.equals("Fi&nd Usages")
-                        && !actionName.equals("Refactor");
+                        return action.isEnabled();
                     } else {
                         return true;
                     }
